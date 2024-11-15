@@ -8,7 +8,7 @@ class DriverManager:
 
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_experimental_option("detach", True)
-        self.driver = webdriver.Chrome(chrome_options)  # Veya Firefox kullanıyorsanız: webdriver.Firefox()
+        self.driver = webdriver.Chrome(chrome_options)
         self.driver.get("https://orteil.dashnet.org/experiments/cookie/")
         self.the_cookie = self.driver.find_element(By.CSS_SELECTOR, "div #cookie")
         self.my_money = int(self.driver.find_element(By.CSS_SELECTOR, "#money").text)
@@ -38,9 +38,9 @@ class DriverManager:
 
     def max_price_find(self):
         # to find highest numb in the purchase list.
-        purchable = [x for x in self.list_of_purchase if x <= self.my_money]
-        print(purchable)
-        if purchable:
-            return max(purchable)
+        purchasable = [x for x in self.list_of_purchase if x <= self.my_money]
+        print(purchasable)
+        if purchasable:
+            return max(purchasable)
         else:
             return None
